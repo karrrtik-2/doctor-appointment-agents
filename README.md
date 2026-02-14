@@ -1,4 +1,4 @@
-# Doctor Appointment Multi-Agent System
+# Doctor Appointment Multi Agent System
 
 A production-style, multi-agent AI application for handling doctor appointment workflows with a FastAPI backend and Streamlit frontend.
 
@@ -185,11 +185,6 @@ Runs the multi-agent workflow.
 - **`OPENAI_API_KEY` missing**: set it in `.env`.
 - **Frontend cannot connect**: ensure FastAPI is running on the same host/port as configured.
 - **Validation error for date/id**: follow expected formats from tool schemas (`DD-MM-YYYY` and `DD-MM-YYYY HH:MM`).
-
-## Security & Privacy
-
-- Do not commit `.env` or any real patient data.
-- This repository is for educational and demonstration purposes and is not production healthcare software.
 
 ## Roadmap Ideas
 
