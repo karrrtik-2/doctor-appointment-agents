@@ -49,21 +49,21 @@ Information Agent   Booking Agent
 
 ```text
 .
-├── agent.py                    # Multi-agent graph and routing logic
-├── main.py                     # FastAPI app entrypoint
-├── streamlit_ui.py             # Streamlit frontend
+├── appointment_agent.py         # Multi-agent graph and routing logic
+├── api.py                       # FastAPI app entrypoint
+├── web_app.py                   # Streamlit frontend
 ├── requirements.txt
 ├── setup.py
 ├── .env.example
 ├── data/
 │   ├── doctor_availability.csv # Seed availability data
 │   └── availability.csv        # Runtime-updated schedule (generated)
-├── data_models/
+├── models/
 │   └── models.py               # Pydantic models for tool inputs
-├── prompt_library/
-│   └── prompt.py               # Supervisor prompt definition
-├── toolkit/
-│   └── toolkits.py             # Domain tools used by specialist agents
+├── prompts/
+│   └── supervisor_prompt.py    # Supervisor prompt definition
+├── tools/
+│   └── appointment_tools.py    # Domain tools used by specialist agents
 └── utils/
     ├── config.py               # App-level settings and path management
     ├── llms.py                 # LLM client factory
@@ -125,7 +125,7 @@ API_PORT=8003
 ### 4) Start backend API
 
 ```bash
-uvicorn main:app --host 127.0.0.1 --port 8003 --reload
+uvicorn api:app --host 127.0.0.1 --port 8003 --reload
 ```
 
 ### 5) Start Streamlit frontend
@@ -133,7 +133,7 @@ uvicorn main:app --host 127.0.0.1 --port 8003 --reload
 In a new terminal:
 
 ```bash
-streamlit run streamlit_ui.py
+streamlit run web_app.py
 ```
 
 ## API Reference
@@ -174,11 +174,11 @@ Runs the multi-agent workflow.
 
 ## Development Tips
 
-- Keep prompts in `prompt_library/prompt.py` focused and deterministic.
+- Keep prompts in `prompts/supervisor_prompt.py` focused and deterministic.
 - Add new capabilities by:
-  1. Defining a new tool in `toolkit/toolkits.py`
-  2. Adding/adjusting a specialist agent node in `agent.py`
-  3. Updating supervisor routing instructions in `prompt_library/prompt.py`
+  1. Defining a new tool in `tools/appointment_tools.py`
+  2. Adding/adjusting a specialist agent node in `appointment_agent.py`
+  3. Updating supervisor routing instructions in `prompts/supervisor_prompt.py`
 
 ## Common Issues
 
