@@ -1,0 +1,39 @@
+# ============================================================
+# Production environment overrides
+# ============================================================
+
+environment: production
+debug: false
+log_level: WARNING
+
+api_host: "0.0.0.0"
+api_port: 8080
+api_workers: 4
+api_cors_origins:
+  - "https://app.example.com"
+
+# Sample 10% of traces in production (cost-conscious)
+langsmith:
+  tracing_sample_rate: 0.1
+
+# Strict resilience
+circuit_breaker_failure_threshold: 3
+circuit_breaker_recovery_timeout: 120
+circuit_breaker_half_open_max_calls: 1
+retry_max_attempts: 5
+retry_base_delay: 2.0
+retry_max_delay: 60.0
+
+# External secrets manager
+secrets_backend: aws_ssm
+
+# Memory (Mem0) — production uses Qdrant
+memory_enabled: true
+memory_vector_store: qdrant
+memory_collection_name: doctor_appointment_memories_prod
+memory_qdrant_url: "http://qdrant:6333"
+memory_max_results: 20
+
+# Tighter agent limits
+recursion_limit: 15
+max_agent_steps: 10

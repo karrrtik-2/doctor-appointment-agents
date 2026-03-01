@@ -1,12 +1,24 @@
+# ── Core framework ───────────────────────────────────────────────
 fastapi==0.115.8
 uvicorn==0.34.0
 streamlit==1.42.0
 requests==2.32.3
 pandas==2.2.3
-python-dotenv==1.0.1
 pydantic==2.10.6
-langchain-core==0.3.45
-langchain==0.3.18
-langgraph==0.2.70
-langchain-openai==0.3.9
+pydantic-settings>=2.5.0
+
+# ── LangChain / LangGraph ───────────────────────────────────────
+langchain-core>=1.2.16
+langchain>=1.2.10
+langgraph>=1.0.10
+langchain-openai>=1.1.10
+
+# ── LangSmith observability ─────────────────────────────────────
+langsmith>=0.1.140
+
+# ── Configuration ────────────────────────────────────────────────
+python-dotenv==1.0.1
+pyyaml>=6.0.1
+
+# ── Development / editable install ──────────────────────────────
 -e .

@@ -7,7 +7,9 @@ def get_requirements() -> List[str]:
         with open('requirements.txt', 'r') as file:
             requirement_list = [
                 line.strip() for line in file.readlines()
-                if line.strip() and line.strip() != '-e .'
+                if line.strip()
+                and not line.strip().startswith('#')
+                and line.strip() != '-e .'
             ]
         return requirement_list
     except FileNotFoundError:
@@ -19,13 +21,19 @@ with open("README.md", "r", encoding="utf-8") as readme_file:
 
 
 setup(
-    name="doctor-appointment-multiagent",
-    version="0.1.0",
-    description="Multi-agent AI assistant for doctor appointment operations",
+    name="doctor-appointment-ai-platform",
+    version="1.0.0",
+    description="Enterprise AI orchestration platform for doctor appointment management with LangSmith observability",
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Project Contributors",
     packages=find_packages(),
     install_requires=get_requirements(),
     python_requires=">=3.10",
+    entry_points={
+        "console_scripts": [
+            "platform-server=run_server:main",
+            "platform-eval=run_evaluation:main",
+        ],
+    },
 )

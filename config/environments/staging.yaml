@@ -1,0 +1,24 @@
+# ============================================================
+# Staging environment overrides
+# ============================================================
+
+environment: staging
+debug: false
+log_level: INFO
+
+api_host: "0.0.0.0"
+api_port: 8080
+api_workers: 2
+api_cors_origins:
+  - "https://staging.example.com"
+
+# Sample 50% of traces in staging
+langsmith:
+  tracing_sample_rate: 0.5
+
+# Moderate resilience
+circuit_breaker_failure_threshold: 5
+circuit_breaker_recovery_timeout: 45
+
+# Use external secrets
+secrets_backend: aws_ssm

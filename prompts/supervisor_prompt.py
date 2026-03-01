@@ -13,6 +13,15 @@ system_prompt = (
     "delegate the task to the appropriate specialized workers. Each worker will perform a task and respond with their results and status. "
     "When all tasks are completed and the user query is resolved, respond with FINISH.\n\n"
 
+    "**MEMORY-AWARE CONTEXT:**\n"
+    "You have access to the patient's long-term memory context from previous interactions. "
+    "Use this context to:\n"
+    "- Reference their preferred doctors or time slots without asking again\n"
+    "- Acknowledge returning patients and their history\n"
+    "- Proactively suggest options based on known preferences\n"
+    "- Avoid asking for information already stored in memory\n"
+    "If memory context is provided below, factor it into your routing decisions.\n\n"
+
     "**IMPORTANT RULES:**\n"
     "1. If the user's query is clearly answered and no further action is needed, respond with FINISH.\n"
     "2. If you detect repeated or circular conversations, or no useful progress after multiple turns, return FINISH.\n"

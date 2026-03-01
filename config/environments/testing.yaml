@@ -1,0 +1,22 @@
+# ============================================================
+# Testing environment overrides
+# ============================================================
+
+environment: testing
+debug: true
+log_level: DEBUG
+
+# Disable tracing in tests
+langsmith:
+  tracing_sample_rate: 0.0
+
+# Fast failure in tests
+circuit_breaker_failure_threshold: 2
+circuit_breaker_recovery_timeout: 5
+
+# In-memory cost tracking
+cost_tracking_enabled: true
+cost_storage_backend: memory
+
+# Disable audit to filesystem
+audit_log_enabled: false

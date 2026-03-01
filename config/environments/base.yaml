@@ -1,0 +1,60 @@
+# ============================================================
+# Base configuration — inherited by all environments
+# ============================================================
+
+environment: development
+debug: false
+log_level: INFO
+
+# API
+api_host: "127.0.0.1"
+api_port: 8003
+api_workers: 1
+api_cors_origins:
+  - "*"
+
+# LLM defaults
+openai_model: gpt-4o
+openai_temperature: 0.0
+openai_max_retries: 3
+openai_request_timeout: 60
+
+# Agent
+recursion_limit: 20
+max_agent_steps: 15
+
+# Resilience
+circuit_breaker_failure_threshold: 5
+circuit_breaker_recovery_timeout: 60
+circuit_breaker_half_open_max_calls: 2
+retry_max_attempts: 3
+retry_base_delay: 1.0
+retry_max_delay: 30.0
+
+# Cost analytics
+cost_tracking_enabled: true
+cost_storage_backend: sqlite
+cost_db_path: data/cost_analytics.db
+
+# Audit
+audit_log_enabled: true
+audit_log_file: logs/audit.jsonl
+decision_log_file: logs/decisions.jsonl
+
+# Evaluation
+eval_benchmark_dir: evaluation/benchmarks
+eval_results_dir: evaluation/results
+regression_threshold_pct: 5.0
+
+# Secrets
+secrets_backend: env
+secrets_prefix: "/doctor-appointment/"
+
+# Memory (Mem0)
+memory_enabled: true
+memory_vector_store: chroma
+memory_collection_name: doctor_appointment_memories
+memory_chroma_path: data/memory/chroma_db
+memory_embedding_model: text-embedding-3-small
+memory_max_results: 15
+memory_auto_extract: true

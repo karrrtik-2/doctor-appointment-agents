@@ -1,0 +1,79 @@
+{
+  "name": "default",
+  "description": "Core benchmark dataset for doctor appointment agent evaluation",
+  "created_at": "2026-03-01T00:00:00Z",
+  "cases": [
+    {
+      "case_id": "avail-001",
+      "input_query": "Is Dr. John Doe available on 15-03-2026?",
+      "patient_id": 1234567,
+      "expected_route": "information_node",
+      "expected_tool": "check_availability_by_doctor",
+      "expected_keywords": ["available", "john doe"],
+      "tags": ["availability", "doctor-lookup"]
+    },
+    {
+      "case_id": "avail-002",
+      "input_query": "Are there any orthodontists available on 20-03-2026?",
+      "patient_id": 1234567,
+      "expected_route": "information_node",
+      "expected_tool": "check_availability_by_specialization",
+      "expected_keywords": ["orthodontist", "available"],
+      "tags": ["availability", "specialization-lookup"]
+    },
+    {
+      "case_id": "book-001",
+      "input_query": "I want to book an appointment with Dr. Jane Smith on 18-03-2026 at 10:00",
+      "patient_id": 1234567,
+      "expected_route": "booking_node",
+      "expected_tool": "set_appointment",
+      "expected_keywords": ["appointment", "jane smith"],
+      "tags": ["booking", "set-appointment"]
+    },
+    {
+      "case_id": "cancel-001",
+      "input_query": "Cancel my appointment with Dr. Emily Johnson on 18-03-2026 at 14:00",
+      "patient_id": 1234567,
+      "expected_route": "booking_node",
+      "expected_tool": "cancel_appointment",
+      "expected_keywords": ["cancel"],
+      "tags": ["booking", "cancel-appointment"]
+    },
+    {
+      "case_id": "resched-001",
+      "input_query": "Reschedule my appointment with Dr. Michael Green from 18-03-2026 10:00 to 20-03-2026 14:00",
+      "patient_id": 1234567,
+      "expected_route": "booking_node",
+      "expected_tool": "reschedule_appointment",
+      "expected_keywords": ["reschedule"],
+      "tags": ["booking", "reschedule-appointment"]
+    },
+    {
+      "case_id": "greeting-001",
+      "input_query": "Hello, how are you?",
+      "patient_id": 1234567,
+      "expected_route": "FINISH",
+      "expected_tool": "",
+      "expected_keywords": ["hello", "help"],
+      "tags": ["greeting", "no-action"]
+    },
+    {
+      "case_id": "avail-003",
+      "input_query": "Check if any general dentist is free on 25-03-2026",
+      "patient_id": 9876543,
+      "expected_route": "information_node",
+      "expected_tool": "check_availability_by_specialization",
+      "expected_keywords": ["general_dentist", "available"],
+      "tags": ["availability", "specialization-lookup"]
+    },
+    {
+      "case_id": "book-002",
+      "input_query": "Book a slot with Dr. Lisa Brown on 22-03-2026 at 09:00",
+      "patient_id": 8765432,
+      "expected_route": "booking_node",
+      "expected_tool": "set_appointment",
+      "expected_keywords": ["appointment", "lisa brown"],
+      "tags": ["booking", "set-appointment"]
+    }
+  ]
+}

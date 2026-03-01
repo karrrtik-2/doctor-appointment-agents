@@ -1,0 +1,23 @@
+# ============================================================
+# Development environment overrides
+# ============================================================
+
+environment: development
+debug: true
+log_level: DEBUG
+
+api_workers: 1
+
+# Full tracing in dev
+langsmith:
+  tracing_sample_rate: 1.0
+
+# Relaxed circuit breaker for development
+circuit_breaker_failure_threshold: 10
+circuit_breaker_recovery_timeout: 30
+
+# Memory — local Chroma for development
+memory_enabled: true
+memory_vector_store: chroma
+memory_chroma_path: data/memory/chroma_db
+memory_max_results: 15

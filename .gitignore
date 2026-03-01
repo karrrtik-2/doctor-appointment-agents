@@ -1,0 +1,40 @@
+# ── Python ───────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# ── Environment ──────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+*.env
+
+# ── Secrets & credentials (NEVER commit) ────────────────────
+*.pem
+*.key
+*.crt
+credentials/
+
+# ── Logs (produced at runtime) ──────────────────────────────
+logs/*.jsonl
+logs/*.log
+
+# ── Data & state ─────────────────────────────────────────────
+data/cost_analytics.db
+data/availability.csv
+data/prompts/
+data/memory/chroma_db/
+
+# ── Evaluation results (generated) ──────────────────────────
+evaluation/results/*.json
+
+# ── IDE ──────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+
+# ── OS ───────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
